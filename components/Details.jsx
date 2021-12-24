@@ -12,15 +12,7 @@ const Details = ({ name, dark }) => {
         setData(data);
         console.log(data);
       });
-  });
-  const fetchCountriesFromCode = (code) => {
-    fetch(`https://restcountries.com/v2/alpha/${code}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        console.log(data);
-      });
-  };
+  }, []);
   return (
     <div
       className={` ${dark ? "bg-gray-200" : "bg-bit-dark-blue"} p-16 ${
@@ -104,7 +96,7 @@ const Details = ({ name, dark }) => {
             {data[0]?.borders?.map((border) => (
               <p
                 onClick={() => {
-                  fetchCountriesFromCode(border);
+                  Router.push(`/${border}`);
                 }}
                 className={`px-4 ${
                   dark ? "bg-white text-black" : "bg-dark-blue text-white"
